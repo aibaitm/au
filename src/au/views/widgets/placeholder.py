@@ -13,6 +13,8 @@ from au.utils.config import (
     FONT_ICON,
     FONT_PLACEHOLDER_DESC,
     FONT_PLACEHOLDER_TITLE,
+    PLACEHOLDER_ICON_PADY,
+    PLACEHOLDER_TITLE_PADY,
 )
 
 
@@ -43,7 +45,7 @@ class Placeholder(tk.Frame):
             font=FONT_ICON,
             bg=COLOR_BG,
             fg=COLOR_TEXT_MUTED,
-        ).pack(pady=(0, 12))
+        ).pack(pady=PLACEHOLDER_ICON_PADY)
 
         if title:
             tk.Label(
@@ -52,7 +54,7 @@ class Placeholder(tk.Frame):
                 font=FONT_PLACEHOLDER_TITLE,
                 bg=COLOR_BG,
                 fg=COLOR_TEXT_SECONDARY,
-            ).pack(pady=(0, 6))
+            ).pack(pady=PLACEHOLDER_TITLE_PADY)
 
         if description:
             tk.Label(

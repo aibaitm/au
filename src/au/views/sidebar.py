@@ -16,8 +16,10 @@ from au.utils.config import (
     COLOR_SIDEBAR_BG_SELECTED,
     COLOR_SIDEBAR_FG,
     COLOR_SIDEBAR_FG_SELECTED,
+    CURSOR_CLICKABLE,
     FONT_LABEL,
     SIDEBAR_NAV_ITEM_HEIGHT,
+    SIDEBAR_NAV_PADX,
     SIDEBAR_WIDTH,
 )
 
@@ -49,7 +51,7 @@ class Sidebar(tk.Frame):
             label: 显示文本。
             icon: 图标（emoji 或文字）。
         """
-        item = tk.Frame(self, bg=COLOR_SIDEBAR_BG, height=SIDEBAR_NAV_ITEM_HEIGHT, cursor="hand2")
+        item = tk.Frame(self, bg=COLOR_SIDEBAR_BG, height=SIDEBAR_NAV_ITEM_HEIGHT, cursor=CURSOR_CLICKABLE)
         item.pack(fill=tk.X)
         item.pack_propagate(False)
 
@@ -62,7 +64,7 @@ class Sidebar(tk.Frame):
             fg=COLOR_SIDEBAR_FG,
             font=FONT_LABEL,
             anchor=tk.W,
-            padx=16,
+            padx=SIDEBAR_NAV_PADX,
         )
         lbl.place(relwidth=1, relheight=1)
 

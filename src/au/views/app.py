@@ -17,6 +17,7 @@ from au.utils.config import (
     COLOR_TOPBAR_BG,
     FONT_STATUS,
     FONT_TITLE,
+    SEPARATOR_HEIGHT,
     STATUSBAR_HEIGHT,
     TOPBAR_HEIGHT,
     WINDOW_TITLE,
@@ -105,7 +106,7 @@ class App:
         bar.pack_propagate(False)
 
         # 分隔线
-        tk.Frame(bar, bg=COLOR_BORDER, height=1).pack(side=tk.TOP, fill=tk.X)
+        tk.Frame(bar, bg=COLOR_BORDER, height=SEPARATOR_HEIGHT).pack(side=tk.TOP, fill=tk.X)
 
         # 状态标签（后续动态更新）
         self._status_label = tk.Label(

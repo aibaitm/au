@@ -15,8 +15,13 @@ from au.utils.config import (
     COLOR_TEXT_HINT,
     COLOR_TEXT_PRIMARY,
     COLOR_TEXT_SECONDARY,
+    CURSOR_CLICKABLE,
     FONT_LABEL,
     FONT_STATUS,
+    SEPARATOR_HEIGHT,
+    TAB_GAP,
+    TAB_LABEL_PADX,
+    TABBAR_HEIGHT,
 )
 
 
@@ -42,7 +47,7 @@ class TabBar(tk.Frame):
             on_select: 标签选中回调，接收 key。
             on_close: 标签关闭回调，接收 key。返回 False 可阻止关闭。
         """
-        super().__init__(parent, bg=COLOR_BG, height=36)
+        super().__init__(parent, bg=COLOR_BG, height=TABBAR_HEIGHT)
         self.pack_propagate(False)
         self._on_select = on_select
         self._on_close = on_close
@@ -50,7 +55,7 @@ class TabBar(tk.Frame):
         self._selected: str | None = None
 
         # 底部边框线
-        tk.Frame(self, bg=COLOR_BORDER, height=1).pack(side=tk.BOTTOM, fill=tk.X)
+        tk.Frame(self, bg=COLOR_BORDER, height=SEPARATOR_HEIGHT).pack(side=tk.BOTTOM, fill=tk.X)
 
     # ------------------------------------------------------------------
     # 公开方法
@@ -67,8 +72,8 @@ class TabBar(tk.Frame):
         if key in self._tabs:
             return
 
-        tab = tk.Frame(self, bg=COLOR_BG, cursor="hand2")
-        tab.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 2))
+        tab = tk.Frame(self, bg=COLOR_BG, cursor=CURSOR_CLICKABLE)
+        tab.pack(side=tk.LEFT, fill=tk.Y, padx=(0, TAB_GAP))
 
         # 文字
         lbl = tk.Label(
@@ -77,7 +82,7 @@ class TabBar(tk.Frame):
             bg=COLOR_BG,
             fg=COLOR_TEXT_SECONDARY,
             font=FONT_LABEL,
-            padx=4,
+            padx=TAB_LABEL_PADX,
         )
         lbl.pack(side=tk.LEFT)
 
@@ -89,8 +94,8 @@ class TabBar(tk.Frame):
                 bg=COLOR_BG,
                 fg=COLOR_TEXT_HINT,
                 font=FONT_STATUS,
-                cursor="hand2",
-                padx=4,
+                cursor=CURSOR_CLICKABLE,
+                padx=TAB_LABEL_PADX,
             )
             btn.pack(side=tk.LEFT)
             btn.bind("<Button-1>", lambda _, k=key: self._do_close(k))

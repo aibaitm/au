@@ -40,7 +40,25 @@ COLOR_STATUSBAR_BG: str = "#fafafa"         # 底栏背景
 TOPBAR_HEIGHT: int = 36                     # 顶栏高度
 STATUSBAR_HEIGHT: int = 28                  # 底栏高度
 
-# 字体（思源黑体，SIL Open Font License 1.1，可免费商用）
+# 标签栏
+TABBAR_HEIGHT: int = 36                     # 标签栏高度
+TAB_GAP: int = 2                            # 标签项间距
+TAB_LABEL_PADX: int = 4                     # 标签文字水平内边距
+
+# 侧边栏
+SIDEBAR_NAV_PADX: int = 16                  # 导航项水平内边距
+
+# 占位组件
+PLACEHOLDER_ICON_PADY: tuple[int, int] = (0, 12)   # 图标与标题间距
+PLACEHOLDER_TITLE_PADY: tuple[int, int] = (0, 6)   # 标题与描述间距
+
+# 通用
+SEPARATOR_HEIGHT: int = 1                   # 分隔线高度
+CURSOR_CLICKABLE: str = "hand2"             # 可点击元素的鼠标样式
+NOTEBOOK_TAB_PADDING: tuple[int, int] = (16, 8)  # Notebook 标签内边距
+PANEL_BORDER_WIDTH: int = 1                 # 面板边框宽度
+
+# 字体（思源黑体）
 FONT_TITLE: tuple[str, int, str] = ("Noto Sans SC", 13, "bold")
 FONT_LABEL: tuple[str, int] = ("Noto Sans SC", 10)
 FONT_BUTTON: tuple[str, int] = ("Noto Sans SC", 10)
@@ -63,7 +81,7 @@ def _on_window_close(window) -> None:
     """
     window.destroy()
 
-
+# 窗口配置函数
 def window_config(window, style):
     window.title(WINDOW_TITLE)
     window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
@@ -78,11 +96,11 @@ def window_config(window, style):
     # 全局背景
     style.configure(".", background=COLOR_BG, font=FONT_LABEL)
     style.configure("TNotebook", background=COLOR_BG, borderwidth=0)
-    style.configure("TNotebook.Tab", padding=(16, 8), font=FONT_LABEL)
+    style.configure("TNotebook.Tab", padding=NOTEBOOK_TAB_PADDING, font=FONT_LABEL)
     style.map(
         "TNotebook.Tab",
         background=[("selected", COLOR_PANEL_BG)],
         foreground=[("selected", COLOR_PRIMARY)],
     )
-    style.configure("Panel.TLabelframe", background=COLOR_PANEL_BG, borderwidth=1)
+    style.configure("Panel.TLabelframe", background=COLOR_PANEL_BG, borderwidth=PANEL_BORDER_WIDTH)
     style.configure("Panel.TLabelframe.Label", font=FONT_LABEL, foreground=COLOR_TEXT_PRIMARY)
