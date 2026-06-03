@@ -51,7 +51,7 @@ FONT_PLACEHOLDER_TITLE: tuple[str, int, str] = ("Noto Sans SC", 14, "bold")  # �
 FONT_PLACEHOLDER_DESC: tuple[str, int] = ("Noto Sans SC", 10)                # 占位描述
 
 # 默认配置值
-DEFAULT_URL: str = "http://192.168.100.66:7000"
+DEFAULT_URL: str = "https://cn.bing.com"
 
 # ============================================
 # 窗口关闭时的清理逻辑
